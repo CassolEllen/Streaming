@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="assets/css/style-login.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+  <script src="js/db.js"></script> <!-- db é definido aqui -->
+  <script src="js/app.js" defer></script> <!-- db será usado aqui -->
+
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="assets/img/netflixlogo.png" alt="Logo">
+    </div>
+  </div>
+
+  <div class="login_body">
+    <div class="login_box">
+      <h2>Entrar</h2>  
+      <form onsubmit="event.preventDefault(); autenticarUsuario();">
+        <div class="input_box">
+          <input required type="text" id="loginUsername" placeholder="Email ou número de telefone">
+        </div>
+
+        <div class="input_box">
+          <input required type="password" id="loginPassword" placeholder="Senha">
+        </div>
+
+        <div>
+          <button class="submit">Entrar</button>
+        </div>
+      </form>
+
+      <div class="suporte">
+        <div class="remember">
+          <input type="checkbox" id="remember">
+          <label for="remember">Lembre-se de mim</label>
+        </div>
+        <div class="help">
+          <a href="#">Precisa de ajuda?</a>
+        </div>
+      </div>
+
+      <div class="login_footer">
+        <div class="login_facebook">
+          <img height="18px" src="assets/img/facebooklogo.png" alt="Facebook">
+          <a href="#">Conectar com o Facebook</a>
+        </div>
+
+        <div class="sign_up">
+          <p>Novo por aqui? <a href="register.html">Assine agora.</a></p>
+        </div>
+
+        <div class="terms">
+          <p>Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô. <a href="#">Saiba mais</a></p> 
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

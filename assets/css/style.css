@@ -17,10 +17,8 @@ body {
 
 header {
     position: relative;
-    width: 80%;
-    height: 82%;
-    border: 1px solid #fff;
-    border-radius: 20px;
+    width: 90%;
+    height: 110%;
     overflow: hidden;
     box-shadow: 0px 5px 25px -1px #000;
 }
@@ -278,4 +276,59 @@ header .content .btns a {
     border-radius: 5px;
     color: #fff;
     margin-left: 10px;
+}
+
+.login-container {
+    width: 300px;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 14px;
+}
+
+.login-container input::placeholder {
+    color: #ccc;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #ff158e, #fe85ac);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    opacity: 0.9;
+}
+
+.login-container .divider {
+    margin: 15px 0;
+    font-size: 12px;
+    opacity: 0.6;
 }

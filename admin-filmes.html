@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Filmes</title>
+  <link rel="stylesheet" href="assets/css/admin-filmes.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+  <script src="js/app.js" defer></script>
+  
+  <script>
+    // Proteção da página - só permite admin
+    const tipo = localStorage.getItem('tipoUsuario');
+if (tipo !== 'admin') {
+  alert('Acesso negado. Área restrita para administradores.');
+  window.location.href = 'index.html';
+}
+
+  </script>
+
+  <div class="container">
+    <h1>Cadastro de Filmes</h1>
+    <form id="form-filme">
+      <input type="text" id="titulo" placeholder="Título do Filme" required />
+      <textarea id="sinopse" placeholder="Sinopse" required></textarea>
+      <input type="url" id="trailer" placeholder="Link do Trailer (YouTube)" required />
+      <select id="categoria" required>
+        <option value="">Selecione a Categoria</option>
+        <option value="Ação">Ação</option>
+        <option value="Comédia">Comédia</option>
+        <option value="Drama">Drama</option>
+        <option value="Terror">Terror</option>
+        <option value="Ficção Científica">Ficção Científica</option>
+        <option value="Animação">Animação</option>
+      </select>
+      <input type="url" id="imagem" placeholder="URL da imagem do cartaz" required />
+      <button type="submit">Salvar Filme</button>
+    </form>
+  </div>
+
+  <script>
+    const dbFilmes = new PouchDB('filmes');
+
+    document.getElementById('form-filme').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const filme = {
+        _id: new Date().toISOString(),
+        titulo: document.getElementById('titulo').value,
+        sinopse: document.getElementById('sinopse').value,
+        trailer: document.getElementById('trailer').value,
+        categoria: document.getElementById('categoria').value,
+        imagem: document.getElementById('imagem').value
+      };
+
+      dbFilmes.put(filme)
+        .then(() => {
+          alert('Filme salvo com sucesso!');
+          document.getElementById('form-filme').reset();
+        })
+        .catch(err => {
+          console.error('Erro ao salvar filme:', err);
+          alert('Erro ao salvar filme.');
+        });
+    });
+  </script>
+</body>
+</html>
