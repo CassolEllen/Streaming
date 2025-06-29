@@ -9,17 +9,22 @@
   <script src="js/app.js" defer></script>
   
   <script>
-    // Proteção da página - só permite admin
-    const tipo = localStorage.getItem('tipoUsuario');
-if (tipo !== 'admin') {
-  alert('Acesso negado. Área restrita para administradores.');
-  window.location.href = 'index.html';
-}
+  const tipo = localStorage.getItem('tipoUsuario');
+  if (tipo !== 'admin') {
+    alert('Acesso negado. Área restrita para administradores.');
+    window.location.href = 'index.html';
+  }
+</script>
+</head>
 
-  </script>
+<body>
 
-  <div class="container">
-    <h1>Cadastro de Filmes</h1>
+<div class="container">
+  <button class="back-home" onclick="window.location.href='index.html'">← Voltar para Home</button>
+
+  <!-- Cadastro de Filmes -->
+  <div class="section">
+    <h2>Cadastro de Filmes</h2>
     <form id="form-filme">
       <input type="text" id="titulo" placeholder="Título do Filme" required />
       <textarea id="sinopse" placeholder="Sinopse" required></textarea>
@@ -32,37 +37,133 @@ if (tipo !== 'admin') {
         <option value="Terror">Terror</option>
         <option value="Ficção Científica">Ficção Científica</option>
         <option value="Animação">Animação</option>
+        <option value="Romance">Romance</option>
+        <option value="Documentário">Documentário</option>
+        <option value="Mistério">Mistério</option>
+        <option value="Musical">Musical</option>
+        <option value="Aventura">Aventura</option>
+        <option value="Fantasia">Fantasia</option>
+        <option value="Faroeste">Faroeste</option>
       </select>
       <input type="url" id="imagem" placeholder="URL da imagem do cartaz" required />
       <button type="submit">Salvar Filme</button>
     </form>
   </div>
 
-  <script>
-    const dbFilmes = new PouchDB('filmes');
+  <div class="divider"></div>
 
-    document.getElementById('form-filme').addEventListener('submit', function (e) {
-      e.preventDefault();
+  <!-- Cadastro de Usuários -->
+  <div class="section">
+    <h2>Cadastro de Usuários</h2>
+    <form id="form-usuario">
+      <input type="text" id="registerUsername" placeholder="Nome de usuário" required />
+      <input type="password" id="registerPassword" placeholder="Senha" required />
+      <select id="registerTipo" required>
+        <option value="comum">Usuário comum</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <button type="submit">Cadastrar Usuário</button>
+    </form>
+  </div>
 
-      const filme = {
-        _id: new Date().toISOString(),
-        titulo: document.getElementById('titulo').value,
-        sinopse: document.getElementById('sinopse').value,
-        trailer: document.getElementById('trailer').value,
-        categoria: document.getElementById('categoria').value,
-        imagem: document.getElementById('imagem').value
-      };
+  <div class="divider"></div>
 
-      dbFilmes.put(filme)
-        .then(() => {
-          alert('Filme salvo com sucesso!');
-          document.getElementById('form-filme').reset();
-        })
-        .catch(err => {
-          console.error('Erro ao salvar filme:', err);
-          alert('Erro ao salvar filme.');
-        });
+  <!-- Lista de Filmes -->
+  <div class="section">
+    <h2>Filmes Cadastrados</h2>
+    <div class="frame" id="lista-filmes"></div>
+  </div>
+
+  <!-- Lista de Usuários -->
+  <div class="section">
+    <h2>Usuários Cadastrados</h2>
+    <div class="frame" id="lista-usuarios"></div>
+  </div>
+</div>
+
+<script>
+  const dbFilmes = new PouchDB('filmes');
+
+  // Cadastrar filme
+  document.getElementById('form-filme').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const filme = {
+      _id: new Date().toISOString(),
+      titulo: document.getElementById('titulo').value,
+      sinopse: document.getElementById('sinopse').value,
+      trailer: document.getElementById('trailer').value,
+      categoria: document.getElementById('categoria').value,
+      imagem: document.getElementById('imagem').value
+    };
+
+    dbFilmes.put(filme)
+      .then(() => {
+        alert('Filme salvo com sucesso!');
+        document.getElementById('form-filme').reset();
+        carregarFilmes();
+      })
+      .catch(err => {
+        console.error('Erro ao salvar filme:', err);
+        alert('Erro ao salvar filme.');
+      });
+  });
+
+  // Cadastrar usuário
+  document.getElementById('form-usuario').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const username = document.getElementById('registerUsername').value;
+    const senha = document.getElementById('registerPassword').value;
+    const tipo = document.getElementById('registerTipo').value;
+
+    const usuario = {
+      _id: new Date().toISOString(),
+      username,
+      senha,
+      tipo
+    };
+
+    db.put(usuario)
+      .then(() => {
+        alert('Usuário cadastrado com sucesso!');
+        document.getElementById('form-usuario').reset();
+        carregarUsuarios();
+      })
+      .catch(err => {
+        console.error('Erro ao cadastrar usuário:', err);
+        alert('Erro ao cadastrar usuário.');
+      });
+  });
+
+  // Carregar filmes cadastrados
+  function carregarFilmes() {
+    dbFilmes.allDocs({ include_docs: true }).then(result => {
+      const container = document.getElementById('lista-filmes');
+      container.innerHTML = '';
+      result.rows.forEach(row => {
+        const doc = row.doc;
+        container.innerHTML += `<p><strong>${doc.titulo}</strong> - ${doc.categoria}</p>`;
+      });
     });
-  </script>
+  }
+
+  // Carregar usuários cadastrados
+  function carregarUsuarios() {
+    db.allDocs({ include_docs: true }).then(result => {
+      const container = document.getElementById('lista-usuarios');
+      container.innerHTML = '';
+      result.rows.forEach(row => {
+        const doc = row.doc;
+        container.innerHTML += `<p><strong>${doc.username}</strong> - ${doc.tipo}</p>`;
+      });
+    });
+  }
+
+  // Inicialização
+  carregarFilmes();
+  carregarUsuarios();
+</script>
+
 </body>
 </html>

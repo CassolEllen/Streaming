@@ -1,31 +1,114 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-      padding: 20px;
-    }
+body {
+  background-color: #121212;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  min-height: 100vh;
+  padding: 2rem;
+}
 
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-      background: #222;
-      padding: 30px;
-      border-radius: 10px;
-    }
+/* Container principal com layout em colunas */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
 
-    input, textarea, select, button {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 5px;
-      border: none;
-    }
+/* Botão voltar */
+.back-home {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  background: #e50914;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-    button {
-      background: #e50914;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  
+.back-home:hover {
+  background: #b00610;
+}
+
+/* Seções com aparência de card */
+.section {
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 2rem;
+  flex: 1 1 400px;
+  box-shadow: 0 0 10px #be0811;
+  min-width: 350px;
+}
+
+/* Títulos */
+.section h2 {
+  color: #e50914;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea,
+select,
+button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+button {
+  background-color: #e50914;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #85060d;
+}
+
+/* Divisória visual */
+.divider {
+  height: 2px;
+  background-color: #444;
+  width: 100%;
+  margin: 2rem 0;
+}
+
+/* Lista de filmes e usuários */
+.frame {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  padding: 1rem;
+}
