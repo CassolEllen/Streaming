@@ -1,11 +1,16 @@
 // js/db.js
-window.db = new PouchDB('usuarios');
 
-// Criar usuário de teste
-db.put({
-  _id: 'usuario-teste',
-  username: 'username',
-  senha: 'senha',
+// Banco de dados separado para usuários
+window.dbUsuarios = new PouchDB('usuarios');
+
+// Banco de dados separado para filmes
+window.dbFilmes = new PouchDB('filmes');
+
+// Criar usuário de teste (apenas se ainda não existir)
+dbUsuarios.put({
+  _id: 'admin',
+  username: 'admin',
+  senha: 'admin123',
   tipo: 'admin'
 }).catch(err => {
   if (err.name !== 'conflict') {

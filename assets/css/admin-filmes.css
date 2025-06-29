@@ -21,24 +21,25 @@ body {
   justify-content: center;
 }
 
-/* Botão voltar */
-.back-home {
-  position: absolute;
-  top: 0.5rem;
-  left: 1rem;
-  background: #e50914;
-  color: #fff;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
+
+.btn-voltar {
+  max-height: 32px;
+  color: white;
+  background-color: #de0611;
+  padding: 6px 12px; /* Reduzi o padding */
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 14px; 
+  transition: background 0.3s ease; 
 }
 
-.back-home:hover {
-  background: #b00610;
+.btn-voltar:hover {
+  background-color: #a3040c;
+  transform: scale(1.02); /* Efeito sutil ao passar o mouse */
 }
+
 
 /* Seções com aparência de card */
 .section {

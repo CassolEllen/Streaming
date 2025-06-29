@@ -1,169 +1,58 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cadastro de Filmes</title>
-  <link rel="stylesheet" href="assets/css/admin-filmes.css" />
-  <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
-  <script src="js/app.js" defer></script>
-  
-  <script>
-  const tipo = localStorage.getItem('tipoUsuario');
-  if (tipo !== 'admin') {
-    alert('Acesso negado. Área restrita para administradores.');
-    window.location.href = 'index.html';
-  }
-</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Cadastro de Filmes e Usuários</title>
+    <link rel="stylesheet" href="assets/css/admin-filmes.css" />
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/app.js" defer></script>
 </head>
-
 <body>
+    <div class="container">
 
-<div class="container">
-  <button class="back-home" onclick="window.location.href='index.html'">← Voltar para Home</button>
+        <a href="index.html" class="btn-voltar">← Voltar para Home</a>
 
-  <!-- Cadastro de Filmes -->
-  <div class="section">
-    <h2>Cadastro de Filmes</h2>
-    <form id="form-filme">
-      <input type="text" id="titulo" placeholder="Título do Filme" required />
-      <textarea id="sinopse" placeholder="Sinopse" required></textarea>
-      <input type="url" id="trailer" placeholder="Link do Trailer (YouTube)" required />
-      <select id="categoria" required>
-        <option value="">Selecione a Categoria</option>
-        <option value="Ação">Ação</option>
-        <option value="Comédia">Comédia</option>
-        <option value="Drama">Drama</option>
-        <option value="Terror">Terror</option>
-        <option value="Ficção Científica">Ficção Científica</option>
-        <option value="Animação">Animação</option>
-        <option value="Romance">Romance</option>
-        <option value="Documentário">Documentário</option>
-        <option value="Mistério">Mistério</option>
-        <option value="Musical">Musical</option>
-        <option value="Aventura">Aventura</option>
-        <option value="Fantasia">Fantasia</option>
-        <option value="Faroeste">Faroeste</option>
-      </select>
-      <input type="url" id="imagem" placeholder="URL da imagem do cartaz" required />
-      <button type="submit">Salvar Filme</button>
-    </form>
-  </div>
+        <h1>Painel de Administração</h1>
 
-  <div class="divider"></div>
+        <!-- Formulário para adicionar filme -->
+        <section class="section">
+            <h2>Cadastro de Filmes</h2>
+            <form id="form-filme">
+                <input type="text" id="titulo" placeholder="Título do filme" required />
+                <input type="text" id="genero" placeholder="Gênero" required />
+                <textarea id="descricao" placeholder="Descrição"></textarea>
+                <button type="submit">Salvar Filme</button>
+            </form>
+        </section>
 
-  <!-- Cadastro de Usuários -->
-  <div class="section">
-    <h2>Cadastro de Usuários</h2>
-    <form id="form-usuario">
-      <input type="text" id="registerUsername" placeholder="Nome de usuário" required />
-      <input type="password" id="registerPassword" placeholder="Senha" required />
-      <select id="registerTipo" required>
-        <option value="comum">Usuário comum</option>
-        <option value="admin">Administrador</option>
-      </select>
-      <button type="submit">Cadastrar Usuário</button>
-    </form>
-  </div>
+        <!-- Formulário para adicionar usuário -->
+        <section class="section">
+            <h2>Cadastro de Usuários</h2>
+            <form id="form-usuario">
+                <input type="text" id="registerUsername" placeholder="Nome de usuário" required />
+                <input type="password" id="registerPassword" placeholder="Senha" required />
+                <select id="registerTipo" required>
+                    <option value="">Selecione o tipo</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Comum">Usuário comum</option>
+                </select>
+                <button type="submit">Cadastrar Usuário</button>
+            </form>
+        </section>
 
-  <div class="divider"></div>
+        <!-- Listas -->
+        <section class="section">
+            <h2>Filmes Cadastrados</h2>
+            <div id="lista-filmes"></div>
+        </section>
 
-  <!-- Lista de Filmes -->
-  <div class="section">
-    <h2>Filmes Cadastrados</h2>
-    <div class="frame" id="lista-filmes"></div>
-  </div>
-
-  <!-- Lista de Usuários -->
-  <div class="section">
-    <h2>Usuários Cadastrados</h2>
-    <div class="frame" id="lista-usuarios"></div>
-  </div>
-</div>
-
-<script>
-  const dbFilmes = new PouchDB('filmes');
-
-  // Cadastrar filme
-  document.getElementById('form-filme').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const filme = {
-      _id: new Date().toISOString(),
-      titulo: document.getElementById('titulo').value,
-      sinopse: document.getElementById('sinopse').value,
-      trailer: document.getElementById('trailer').value,
-      categoria: document.getElementById('categoria').value,
-      imagem: document.getElementById('imagem').value
-    };
-
-    dbFilmes.put(filme)
-      .then(() => {
-        alert('Filme salvo com sucesso!');
-        document.getElementById('form-filme').reset();
-        carregarFilmes();
-      })
-      .catch(err => {
-        console.error('Erro ao salvar filme:', err);
-        alert('Erro ao salvar filme.');
-      });
-  });
-
-  // Cadastrar usuário
-  document.getElementById('form-usuario').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const username = document.getElementById('registerUsername').value;
-    const senha = document.getElementById('registerPassword').value;
-    const tipo = document.getElementById('registerTipo').value;
-
-    const usuario = {
-      _id: new Date().toISOString(),
-      username,
-      senha,
-      tipo
-    };
-
-    db.put(usuario)
-      .then(() => {
-        alert('Usuário cadastrado com sucesso!');
-        document.getElementById('form-usuario').reset();
-        carregarUsuarios();
-      })
-      .catch(err => {
-        console.error('Erro ao cadastrar usuário:', err);
-        alert('Erro ao cadastrar usuário.');
-      });
-  });
-
-  // Carregar filmes cadastrados
-  function carregarFilmes() {
-    dbFilmes.allDocs({ include_docs: true }).then(result => {
-      const container = document.getElementById('lista-filmes');
-      container.innerHTML = '';
-      result.rows.forEach(row => {
-        const doc = row.doc;
-        container.innerHTML += `<p><strong>${doc.titulo}</strong> - ${doc.categoria}</p>`;
-      });
-    });
-  }
-
-  // Carregar usuários cadastrados
-  function carregarUsuarios() {
-    db.allDocs({ include_docs: true }).then(result => {
-      const container = document.getElementById('lista-usuarios');
-      container.innerHTML = '';
-      result.rows.forEach(row => {
-        const doc = row.doc;
-        container.innerHTML += `<p><strong>${doc.username}</strong> - ${doc.tipo}</p>`;
-      });
-    });
-  }
-
-  // Inicialização
-  carregarFilmes();
-  carregarUsuarios();
-</script>
-
+        <section class="section">
+            <h2>Usuários Cadastrados</h2>
+            <div id="lista-usuarios"></div>
+        </section>
+    </div>
 </body>
 </html>
