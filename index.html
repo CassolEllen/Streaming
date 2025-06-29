@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@4.7.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Streaming de filmes sei la o quê isso é só um titulo</title>
     <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
@@ -12,25 +13,47 @@
 
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">
-            <img src="./assets/img/netflixlogo.png" alt="Netflix logo in bold red letters on a white background" style="height: 50px;">
-        </a>
-        <ul class="navigation">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Séries</a></li>
-            <li><a href="#">Filmes</a></li>
-            <li><a href="#">Minha Lista</a></li>
-        </ul>
-        <div class="search">
-            <input type="text" placeholder="Pesquisar">
-            <i class="fa fa-search" aria-hidden="true"></i>
-        </div>
-    </header>
-    <div class="banner">
-        <video src="./assets/video/Nosferatu.mp4" autoplay muted loop class="bg"></video>
+  <header>
+    <a href="#" class="logo">
+      <img src="./assets/img/netflixlogo.png" alt="Logo Netflix">
+    </a>
+
+    <ul class="navigation">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Séries</a></li>
+      <li><a href="#">Filmes</a></li>
+      <li><a href="#">Minha Lista</a></li>
+    </ul>
+
+    <div class="search">
+      <input type="text" placeholder="Pesquisar">
+      <i class="bi bi-search"></i>
     </div>
-    <script src="app.js"></script>
+  </header>
+
+  <section class="banner">
+    <video class="bg" src="./assets/video/Nosferatu.mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+
+    <div class="content">
+      <img src="./assets/img/nosferatulogo.png" alt="Título do Filme" class="movietitle" />
+      <h4>
+        <span>2024</span>
+        <span>2h12min</span>
+        <span><i>+16</i></span>
+        <span>Terror</span>
+      </h4>
+      <p>
+        Uma jovem noiva é deixada sob os cuidados de amigos enquanto seu marido viaja para a Transilvânia
+        para encontrar o Conde Orlok. Atormentada por visões e um crescente pavor, ela se depara com uma força maligna.
+      </p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+      </div>
+    </div>
+  </section>
+<script src="app.js"></script>
 </body>
 
 </html>
