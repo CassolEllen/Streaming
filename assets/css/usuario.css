@@ -1,0 +1,27 @@
+body {
+  background-color: #111;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+}
+
+header h4 span {
+  font-weight: bold;
+  color: #f44336;
+}
+
+ul#filmesAssistidos li {
+  background-color: #222;
+  color: #ccc;
+  border: none;
+  margin-bottom: 10px;
+}
+
+form input {
+  background-color: #222;
+  color: white;
+  border: 1px solid #444;
+}
+
+form input::placeholder {
+  color: #aaa;
+}

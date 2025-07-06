@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel do Usuário</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/usuario.css">
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+</head>
+<body>
+  <header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
+    <h3 class="m-0">Bem-vindo, <span id="nomeUsuario">Usuário</span></h3>
+    <div>
+      <button class="btn btn-outline-light btn-sm" onclick="alterarSenha()">
+        <i class="bi bi-key"></i> Alterar Senha
+      </button>
+      <button class="btn btn-danger btn-sm" onclick="logout()">
+        <i class="bi bi-box-arrow-right"></i> Sair
+      </button>
+    </div>
+  </header>
+
+  <main class="container mt-4">
+    <h4>Filmes Assistidos</h4>
+    <div id="filmesAssistidos" class="row row-cols-1 row-cols-md-3 g-3">
+      <!-- Lista de filmes preenchida via JS -->
+    </div>
+  </main>
+
+  <script>
+    const dbFilmes = new PouchDB('filmes');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const usuario = localStorage.getItem('usuarioLogado');
+      if (!usuario) {
+        alert("Você precisa estar logado para acessar.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      document.getElementById('nomeUsuario').textContent = usuario;
+
+      carregarFilmesAssistidos();
+    });
+
+    function carregarFilmesAssistidos() {
+      const container = document.getElementById('filmesAssistidos');
+
+      dbFilmes.allDocs({ include_docs: true }).then(result => {
+        container.innerHTML = '';
+        result.rows.forEach(row => {
+          const filme = row.doc;
+          container.innerHTML += `
+            <div class="col">
+              <div class="card bg-dark text-white h-100">
+                <div class="card-body">
+                  <h5 class="card-title">${filme.titulo}</h5>
+                  <p class="card-text">${filme.descricao || 'Sem descrição.'}</p>
+                  <span class="badge bg-secondary">${filme.genero || 'Gênero não informado'}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+      });
+    }
+
+    function alterarSenha() {
+      const novaSenha = prompt("Digite sua nova senha:");
+      if (!novaSenha) return;
+
+      const username = localStorage.getItem('usuarioLogado');
+      const dbUsuarios = new PouchDB('usuarios');
+
+      dbUsuarios.allDocs({ include_docs: true }).then(result => {
+        const user = result.rows.find(r => r.doc.username === username);
+        if (user) {
+          const atualizado = {
+            ...user.doc,
+            senha: novaSenha
+          };
+
+          dbUsuarios.put(atualizado).then(() => {
+            alert("Senha atualizada com sucesso!");
+          });
+        }
+      });
+    }
+
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
