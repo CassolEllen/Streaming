@@ -33,8 +33,11 @@ Este projeto é um clone funcional da Netflix com funcionalidades básicas de au
 ## 🧱 Estrutura do Projeto
 
 📁 projeto/
+
 ├── index.html # Tela inicial com verificação de tipo de usuário
+
 ├── login.html # Tela de autenticação
+
 ├── admin-filmes.html # Área administrativa (admin)
 ├── usuario.html # Área para usuários comuns
 ├── js/
