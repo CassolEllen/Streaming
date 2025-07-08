@@ -39,17 +39,29 @@ Este projeto é um clone funcional da Netflix com funcionalidades básicas de au
 ├── login.html # Tela de autenticação
 
 ├── admin-filmes.html # Área administrativa (admin)
+
 ├── usuario.html # Área para usuários comuns
+
 ├── js/
+
 │ ├── app.js # Lógica de autenticação, cadastro e interação com o banco
+
 │ └── db.js # Inicialização do banco de dados
+
 ├── assets/
+
 │ ├── css/
+
 │ │ ├── style.css # Estilo principal da aplicação
+
 │ │ ├── admin.css # Estilos para admin-filmes.html
+
 │ │ └── usuario.css # Estilos para usuario.html
+
 │ ├── img/ # Imagens (logo, avatar, etc.)
+
 │ └── video/ # Vídeo de fundo (Nosferatu.mp4, etc.)
+
 └── README.md # Este arquivo
 
 
