@@ -77,5 +77,6 @@ PouchDB (armazenamento local no navegador)
 Bootstrap Icons
 
 
-✨ Autor
+## ✨ Autor
+
 Desenvolvido com dedicação por Ellen Cristina Cassol
