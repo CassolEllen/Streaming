@@ -79,4 +79,4 @@ Bootstrap Icons
 
 ## ✨ Autor
 
-Desenvolvido com dedicação por Ellen Cristina Cassol
+Desenvolvido com dedicação, sangue, suor e lágrimas por Ellen Cristina Cassol
