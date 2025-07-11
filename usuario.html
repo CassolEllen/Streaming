@@ -10,24 +10,27 @@
   <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
 </head>
 <body>
-  <header class="d-flex justify-content-between align-items-center p-3 bg-dark text-white">
-    <h3 class="m-0">Bem-vindo, <span id="nomeUsuario">Usuário</span></h3>
-    <div>
-      <button class="btn btn-outline-light btn-sm" onclick="alterarSenha()">
-        <i class="bi bi-key"></i> Alterar Senha
-      </button>
-      <button class="btn btn-danger btn-sm" onclick="logout()">
-        <i class="bi bi-box-arrow-right"></i> Sair
-      </button>
-    </div>
+  <a href="index.html" class="btn-voltar">← Voltar para Home</a>
+  <header>
+    <h1>Olá, <span id="nomeUsuario">Usuário</span></h1>
+    <h4>Tipo: <span id="tipoUsuario">Comum</span></h4>
   </header>
 
-  <main class="container mt-4">
-    <h4>Filmes Assistidos</h4>
-    <div id="filmesAssistidos" class="row row-cols-1 row-cols-md-3 g-3">
-      <!-- Lista de filmes preenchida via JS -->
-    </div>
-  </main>
+  <div class="container">
+    <section>
+      <h2>Filmes Assistidos</h2>
+      <ul id="filmesAssistidos">
+      </ul>
+    </section>
+
+    <section>
+      <h2>Alterar Senha</h2>
+      <form id="form-senha">
+        <input type="password" placeholder="Nova senha" id="novaSenha">
+        <button type="submit">Atualizar Senha</button>
+      </form>
+    </section>
+  </div>
 
   <script>
     const dbFilmes = new PouchDB('filmes');

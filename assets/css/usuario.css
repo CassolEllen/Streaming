@@ -1,7 +1,51 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
 body {
-  background-color: #111;
+  background-color: #1f1f1f;
   color: white;
   font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+
+/* Cabeçalho */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.btn-voltar {
+  max-height: 32px;
+  color: white;
+  background-color: #de0611;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 14px; 
+  transition: background 0.3s ease; 
+}
+
+.btn-voltar:hover {
+  background-color: #a3040c;
+  transform: scale(1.02);
 }
 
 header h4 span {
@@ -9,19 +53,70 @@ header h4 span {
   color: #f44336;
 }
 
+
+/* Lista de filmes assistidos */
+ul#filmesAssistidos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 ul#filmesAssistidos li {
-  background-color: #222;
+  background-color: #532cad;
   color: #ccc;
-  border: none;
-  margin-bottom: 10px;
+  border-radius: 10px;
+  padding: 1rem;
+  min-width: 200px;
+  max-width: 240px;
+  flex: 1 1 200px;
+  box-shadow: 0 0 6px rgba(255, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+
+/* Formulários */
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 400px;
 }
 
 form input {
   background-color: #222;
   color: white;
-  border: 1px solid #444;
+  border: 1px solid #cf1313;
+  padding: 0.8rem;
+  border-radius: 6px;
 }
 
 form input::placeholder {
   color: #aaa;
+}
+
+form button {
+  background-color: #a31006;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: #d32f2f;
+}
+
+/* Container geral */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
 }

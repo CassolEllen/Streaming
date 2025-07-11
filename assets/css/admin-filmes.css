@@ -1,10 +1,11 @@
-/* Reset */
+/* RESET BÁSICO */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ESTILO GLOBAL */
 body {
   background-color: #121212;
   font-family: 'Segoe UI', sans-serif;
@@ -13,7 +14,7 @@ body {
   padding: 2rem;
 }
 
-/* Container principal com layout em colunas */
+/* CONTAINER FLEXÍVEL PARA OS CARDS */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -21,12 +22,12 @@ body {
   justify-content: center;
 }
 
-
+/* BOTÃO VOLTAR */
 .btn-voltar {
   max-height: 32px;
   color: white;
   background-color: #de0611;
-  padding: 6px 12px; /* Reduzi o padding */
+  padding: 6px 12px;
   border-radius: 4px;
   text-decoration: none;
   display: inline-block;
@@ -37,34 +38,59 @@ body {
 
 .btn-voltar:hover {
   background-color: #a3040c;
-  transform: scale(1.02); /* Efeito sutil ao passar o mouse */
+  transform: scale(1.02);
 }
 
-
-/* Seções com aparência de card */
+/* CARDS (SECTIONS) DE CONTEÚDO */
 .section {
   background-color: #1f1f1f;
   border-radius: 12px;
   padding: 2rem;
-  flex: 1 1 400px;
+
+  /* Evita que os cards cresçam demais */
+  flex: 50 400px;
+
+  /* Tamanhos dinâmicos conforme conteúdo */
+  min-width: 300px;
+  max-width: 420px;
+  height: 500px;
+
   box-shadow: 0 0 10px #be0811;
-  min-width: 350px;
 }
 
-/* Títulos */
+.section.filmes_cadastrados {
+
+  background-color: #1f1f1f;
+  border-radius: 12px;
+  padding: 2rem;
+
+  /* Evita que os cards cresçam demais */
+  flex: 50 400px;
+
+  /* Tamanhos dinâmicos conforme conteúdo */
+  min-width: 300px;
+  max-width: 420px;
+  height: auto;
+
+  box-shadow: 0 0 10px #be0811;
+}
+
+
+/* TÍTULOS DOS CARDS */
 .section h2 {
   color: #e50914;
   margin-bottom: 1rem;
   font-size: 1.4rem;
 }
 
-/* Formulários */
+/* FORMULÁRIOS */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+/* CAMPOS DO FORMULÁRIO */
 input,
 textarea,
 select,
@@ -82,11 +108,13 @@ select {
   color: #fff;
 }
 
+/* TEXTAREA AJUSTÁVEL */
 textarea {
   resize: vertical;
   min-height: 80px;
 }
 
+/* BOTÕES */
 button {
   background-color: #e50914;
   color: white;
@@ -99,7 +127,7 @@ button:hover {
   background-color: #85060d;
 }
 
-/* Divisória visual */
+/* DIVISÓRIA ENTRE SEÇÕES (SE USADA) */
 .divider {
   height: 2px;
   background-color: #444;
@@ -107,9 +135,32 @@ button:hover {
   margin: 2rem 0;
 }
 
-/* Lista de filmes e usuários */
+/* ÁREA DE LISTAGEM (FILMES/USUÁRIOS) */
 .frame {
   background-color: #2a2a2a;
   border-radius: 10px;
   padding: 1rem;
+  max-height: 100%;
+}
+
+/* MELHORIA NA EXIBIÇÃO DAS LISTAS */
+.frame p {
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+/* EXIBIÇÃO DAS CAPAS DOS FILMES */
+.frame img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+  .section {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
 }

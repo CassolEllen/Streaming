@@ -79,9 +79,10 @@ if (formFilme) {
     const filme = {
       _id: new Date().toISOString(),
       titulo: document.getElementById('titulo').value,
+      capa: document.getElementById('capa').value,
       genero: document.getElementById('genero').value,
       descricao: document.getElementById('descricao').value,
-      
+      trailer: document.getElementById('trailer').value
     };
 
     dbFilmes.put(filme)
@@ -106,7 +107,14 @@ function carregarFilmes() {
     container.innerHTML = '';
     result.rows.forEach(row => {
       const doc = row.doc;
-      container.innerHTML += `<p><strong>${doc.titulo}</strong> - ${doc.categoria}</p>`;
+      container.innerHTML += `
+        <div style="margin-bottom: 1rem">
+          <img src="${doc.capa}" alt="${doc.titulo}" style="width: 100px; height: auto; display: block; margin-bottom: 0.5rem;">
+          <strong>${doc.titulo}</strong> - ${doc.genero}<br>
+          <em>${doc.descricao}</em><br>
+          <a href="${doc.trailer}" target="_blank">Ver Trailer</a>
+        </div>
+      `;
     });
   });
 }
@@ -124,6 +132,19 @@ function carregarUsuarios() {
     });
   });
 }
+
+function verificarUsuario() {
+  const tipoUsuario = localStorage.getItem('tipoUsuario');
+
+  if (tipoUsuario === 'admin') {
+    window.location.href = 'admin-filmes.html';
+  } else if (tipoUsuario === 'comum') {
+    window.location.href = 'usuario.html';
+  } else {
+    alert('Usuário não autenticado. Faça login primeiro.');
+  }
+}
+
 
 // Inicialização automática das listas
 if (document.getElementById('lista-filmes')) carregarFilmes();

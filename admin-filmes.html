@@ -11,48 +11,59 @@
     <script src="js/app.js" defer></script>
 </head>
 <body>
-    <div class="container">
+  <a href="index.html" class="btn-voltar">← Voltar para Home</a>
+  <h1>Painel de Administração</h1>
 
-        <a href="index.html" class="btn-voltar">← Voltar para Home</a>
+  <div class="container">
+    <section class="section">
+      <h2>Cadastro de Filmes</h2>
+      <form id="form-filme">
+        <input type="text" id="titulo" placeholder="Título do filme" required>
+        <input type="url" id="capa" placeholder="URL da imagem da capa" required>
+        <select id="genero" required>
+          <option value="">Selecione o gênero</option>
+          <option value="Ação">Ação</option>
+          <option value="Aventura">Aventura</option>
+          <option value="Comédia">Comédia</option>
+          <option value="Drama">Drama</option>
+          <option value="Terror">Terror</option>
+          <option value="Ficção Científica">Ficção Científica</option>
+          <option value="Romance">Romance</option>
+          <option value="Suspense">Suspense</option>
+        </select>
+        <textarea id="descricao" placeholder="Descrição" required></textarea>
+        <input type="url" id="trailer" placeholder="URL do trailer no YouTube" required>
+        <button type="submit">Salvar Filme</button>
+      </form>
+    </section>
 
-        <h1>Painel de Administração</h1>
+    <section class="section filmes_cadastrados">
+      <h2>Filmes Cadastrados</h2>
+      <div id="lista-filmes" class="frame"></div>
+    </section>
 
-        <!-- Formulário para adicionar filme -->
-        <section class="section">
-            <h2>Cadastro de Filmes</h2>
-            <form id="form-filme">
-                <input type="text" id="titulo" placeholder="Título do filme" required />
-                <input type="text" id="genero" placeholder="Gênero" required />
-                <textarea id="descricao" placeholder="Descrição"></textarea>
-                <button type="submit">Salvar Filme</button>
-            </form>
-        </section>
+    <section class="section">
+      <h2>Cadastro de Usuários</h2>
+      <form id="form-usuario">
+        <input type="text" id="registerUsername" placeholder="Nome de usuário" required>
+        <input type="password" id="registerPassword" placeholder="Senha" required>
+        <select id="registerTipo" required>
+          <option value="">Selecione o tipo</option>
+          <option value="admin">Admin</option>
+          <option value="comum">Comum</option>
+        </select>
+        <button type="submit">Cadastrar Usuário</button>
+      </form>
+    </section>
 
-        <!-- Formulário para adicionar usuário -->
-        <section class="section">
-            <h2>Cadastro de Usuários</h2>
-            <form id="form-usuario">
-                <input type="text" id="registerUsername" placeholder="Nome de usuário" required />
-                <input type="password" id="registerPassword" placeholder="Senha" required />
-                <select id="registerTipo" required>
-                    <option value="">Selecione o tipo</option>
-                    <option value="Administrador">Administrador</option>
-                    <option value="Comum">Usuário comum</option>
-                </select>
-                <button type="submit">Cadastrar Usuário</button>
-            </form>
-        </section>
+    <section class="section">
+      <h2>Usuários Cadastrados</h2>
+      <div id="lista-usuarios" class="frame"></div>
+    </section>
+  </div>
 
-        <!-- Listas -->
-        <section class="section">
-            <h2>Filmes Cadastrados</h2>
-            <div id="lista-filmes"></div>
-        </section>
-
-        <section class="section">
-            <h2>Usuários Cadastrados</h2>
-            <div id="lista-usuarios"></div>
-        </section>
-    </div>
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
+
 </html>
