@@ -359,3 +359,35 @@ header {
     display: none;
   }
 }
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtro-genero {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  margin-left: auto;
+  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.filtro-genero label {
+  font-size: 14px;
+}
+
+.filtro-genero select {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  background-color: #e50914;
+  color: #fdfdfd;
+  font-weight: 500;
+}
