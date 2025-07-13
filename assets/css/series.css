@@ -13,7 +13,6 @@ body {
   color: #fff;
 }
 
-/* HEADER */
 header {
   position: absolute;
   top: 0;
@@ -148,7 +147,7 @@ body, section {
   z-index: 1;
 }
 
-/* Fade entre seções */
+
 .banner::after {
   content: "";
   position: absolute;
