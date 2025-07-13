@@ -40,19 +40,20 @@ header {
 
 .grid-assistidos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
   margin-top: 20px;
+  justify-items: center;
 }
 
 .card-filme {
-  width: 300px;
-  height: 320px;
+  width: 260px;
+  height: 220px;
   background-color: #f9f9f9;
   border-radius: 8px;
   padding: 10px;
   text-align: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 6px #ce0c0c;
   transition: transform 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -66,16 +67,16 @@ header {
 }
 
 .card-filme img {
-  width: 280px;
-  height: 280px;
+  width: 250px;
+  height: 160px;
   object-fit: cover;
   margin-bottom: 8px;
   border-radius: 10px;
 }
 
 .card-filme p {
-  color: black;
-  margin: 2px 0;
+  color: #000;
+  margin: 1px 0;
   font-size: 0.85rem;
   line-height: 1.2;
   overflow: hidden;
@@ -83,3 +84,4 @@ header {
   white-space: nowrap;
   width: 100%;
 }
+
