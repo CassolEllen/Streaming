@@ -69,6 +69,13 @@ if (formUsuario) {
     });
   });
 }
+// Exibe o botão só se o usuário for 'admin'
+const usuarioLogado = localStorage.getItem('usuarioLogado');
+if (usuarioLogado !== 'admin') {
+  const btnLimpar = document.getElementById('limparBanco');
+  if (btnLimpar) btnLimpar.style.display = 'none';
+}
+
 
 // Cadastro de filmes
 const formFilme = document.getElementById('form-filme');
@@ -149,3 +156,54 @@ function verificarUsuario() {
 // Inicialização automática das listas
 if (document.getElementById('lista-filmes')) carregarFilmes();
 if (document.getElementById('lista-usuarios')) carregarUsuarios();
+
+document.getElementById('limparBanco')?.addEventListener('click', async () => {
+  if (!confirm("Tem certeza que deseja apagar todos os dados? Isso é irreversível.")) return;
+
+  try {
+    // Limpa os FILMES
+    const filmes = await dbFilmes.allDocs({ include_docs: true });
+    for (const row of filmes.rows) {
+      await dbFilmes.remove(row.doc);
+    }
+
+    // Limpa os USUÁRIOS, mantendo apenas admin e ellen4
+    const usuarios = await dbUsuarios.allDocs({ include_docs: true });
+    for (const row of usuarios.rows) {
+      const { username } = row.doc;
+      if (username !== 'admin' && username !== 'ellen4') {
+        await dbUsuarios.remove(row.doc);
+      }
+    }
+
+    // Recria admin
+    dbUsuarios.get('admin').catch(() => {
+      return dbUsuarios.put({
+        _id: 'admin',
+        username: 'admin',
+        senha: 'admin',
+        tipo: 'admin'
+      });
+    });
+
+    // Recria ellen4
+    dbUsuarios.get('ellen4').catch(() => {
+      return dbUsuarios.put({
+        _id: 'ellen4',
+        username: 'ellen4',
+        senha: 'ellen4',
+        tipo: 'comum'
+      });
+    });
+
+    alert("Banco de dados limpo! Apenas 'admin' e 'ellen4' foram mantidos.");
+    carregarUsuarios();
+    carregarFilmes();
+
+  } catch (err) {
+    console.error("Erro ao limpar banco:", err);
+    alert("Erro ao limpar banco. Verifique o console.");
+  }
+});
+
+
