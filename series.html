@@ -11,6 +11,8 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pouchdb@9.0.0/dist/pouchdb.min.js"></script>
   <title>Séries</title>
+</head>
+
 <body>
   <header>
     <a href="#" class="logo">
@@ -41,71 +43,100 @@
       </div>
     </div>
   </header>
-  <section class="banner">
-      <video class="bg" src="./assets/video/The Big Bang Theory - 10ª Temporada Completa Trailer Oficial.mp4" autoplay muted loop></video>
-      <div class="overlay-left"></div>
-      <div class="content">
-        <img src="./assets/img/TheBigBangTheory.png" alt="Título do Filme" class="movietitle" />
-        <h4>
-          <span>2007</span>
-          <span>12 Temporadas</span>
-          <span><i>+10</i></span>
-          <span>Comédia</span>
-        </h4>
-        <p>
-          Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados, 
-          e lhes mostra quão pouco sabem sobre a vida fora do laboratório.
-        </p>
-        <div class="buttons">
-          <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-          <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
-        </div>
+
+  <!-- Série: The Big Bang Theory -->
+  <section class="banner"
+    data-titulo="The Big Bang Theory"
+    data-capa="./assets/img/TheBigBangTheory.png"
+    data-genero="Comédia"
+    data-descricao="Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados, e lhes mostra quão pouco sabem sobre a vida fora do laboratório."
+    data-trailer="https://www.youtube.com/watch?v=EXEMPLO">
+    <video class="bg" src="./assets/video/The Big Bang Theory - 10ª Temporada Completa Trailer Oficial.mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/TheBigBangTheory.png" alt="Título do Filme" class="movietitle" />
+      <h4>
+        <span>2007</span>
+        <span>12 Temporadas</span>
+        <span><i>+10</i></span>
+        <span>Comédia</span>
+      </h4>
+      <p>Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados...</p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
+    </div>
   </section>
 
-  <section class="banner">
-      <video class="bg" src="./assets/video/Peaky Blinders - Temporada Final - Trailer Legendado (HD).mp4" autoplay muted loop></video>
-      <div class="overlay-left"></div>
-      <div class="content">
-        <img src="./assets/img/PeakyBlinder.png" alt="Título da Série" class="movietitle" />
-        <h4>
-          <span>2013</span>
-          <span>6 Temporadas</span>
-          <span><i>+16</i></span>
-          <span>Crime</span>
-        </h4>
-        <p>
-          Depois de servir no Exército, Thomas Shelby e seus irmãos voltam para controlar a cidade, mas, 
-          conforme as ambições de Shelby se estendem, ele planeja construir seu próprio negócio e impedir qualquer um que atrapalhe.
-        </p>
-        <div class="buttons">
-          <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-          <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
-        </div>
+  <!-- Série: Peaky Blinders -->
+  <section class="banner"
+    data-titulo="Peaky Blinders"
+    data-capa="./assets/img/PeakyBlinder.png"
+    data-genero="Crime"
+    data-descricao="Depois de servir no Exército, Thomas Shelby e seus irmãos voltam para controlar a cidade, mas conforme as ambições de Shelby se estendem, ele planeja construir seu próprio negócio e impedir qualquer um que atrapalhe."
+    data-trailer="https://www.youtube.com/watch?v=EXEMPLO2">
+    <video class="bg" src="./assets/video/Peaky Blinders - Temporada Final - Trailer Legendado (HD).mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/PeakyBlinder.png" alt="Título da Série" class="movietitle" />
+      <h4>
+        <span>2013</span>
+        <span>6 Temporadas</span>
+        <span><i>+16</i></span>
+        <span>Crime</span>
+      </h4>
+      <p>Depois de servir no Exército, Thomas Shelby e seus irmãos voltam para controlar a cidade, mas conforme as ambições de Shelby se estendem...</p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
+    </div>
   </section>
-  <section class="banner">
-      <video class="bg" src="./assets/video/Chernobyl (2019) ｜ Trailer Legendado - 1ª Temporada.mp4" autoplay muted loop></video>
-      <div class="overlay-left"></div>
-      <div class="content">
-        <img src="./assets/img/Chernobyllogo.png" alt="Título da Série" class="movietitle" />
-        <h4>
-          <span>2019</span>
-          <span>1 Temporada</span>
-          <span><i>+16</i></span>
-          <span>Desastre</span>
-        </h4>
-        <p>
-          A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986, 
-          revelando como e por que aconteceu e contando as histórias chocantes e notáveis daqueles que lutaram e caíram
-        </p>
-        <div class="buttons">
-          <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-          <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
-        </div>
+
+  <!-- Série: Chernobyl -->
+  <section class="banner"
+    data-titulo="Chernobyl"
+    data-capa="./assets/img/Chernobyllogo.png"
+    data-genero="Desastre"
+    data-descricao="A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986..."
+    data-trailer="https://www.youtube.com/watch?v=EXEMPLO3">
+    <video class="bg" src="./assets/video/Chernobyl (2019) ｜ Trailer Legendado - 1ª Temporada.mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/Chernobyllogo.png" alt="Título da Série" class="movietitle" />
+      <h4>
+        <span>2019</span>
+        <span>1 Temporada</span>
+        <span><i>+16</i></span>
+        <span>Desastre</span>
+      </h4>
+      <p>A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986, revelando como e por que aconteceu...</p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
+    </div>
   </section>
+
   <script src="./js/app.js"></script>
-  
+  <script>
+    document.querySelectorAll('.marcar-assistido').forEach(botao => {
+      botao.addEventListener('click', function () {
+        const banner = this.closest('.banner');
+        const titulo = banner.dataset.titulo;
+        const capa = banner.dataset.capa;
+        const genero = banner.dataset.genero;
+        const descricao = banner.dataset.descricao;
+        const trailer = banner.dataset.trailer;
+
+        marcarComoAssistido(titulo, capa, genero, descricao, trailer);
+        alert(`"${titulo}" foi marcado como assistido.`);
+      });
+    });
+  </script>
 </body>
 </html>

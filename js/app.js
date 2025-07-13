@@ -206,4 +206,141 @@ document.getElementById('limparBanco')?.addEventListener('click', async () => {
   }
 });
 
+function carregarAssistidos() {
+  const container = document.getElementById('lista-assistidos');
+  if (!container) return;
+
+  const usuario = localStorage.getItem('usuarioLogado');
+  dbAssistidos.allDocs({ include_docs: true }).then(result => {
+    container.innerHTML = '';
+    result.rows
+      .filter(row => row.doc.username === usuario)
+      .forEach(row => {
+        const doc = row.doc;
+        container.innerHTML += `
+          <div style="margin-bottom: 1rem">
+            <img src="${doc.capa}" alt="${doc.titulo}" style="width: 100px;"><br>
+            <strong>${doc.titulo}</strong> - ${doc.genero}<br>
+            <em>${doc.descricao}</em><br>
+            ${doc.trailer ? `<a href="${doc.trailer}" target="_blank">Trailer</a><br>` : ''}
+          </div>
+        `;
+      });
+  });
+}
+
+// Carrega automaticamente ao entrar
+if (document.getElementById('lista-assistidos')) carregarAssistidos();
+
+function marcarComoAssistido(titulo, capa, genero, descricao, trailer) {
+  const username = localStorage.getItem('usuarioLogado');
+  if (!username) {
+    alert("Você precisa estar logado para assistir.");
+    return;
+  }
+
+  const idUnico = `${username}_${titulo}`; // Evita duplicatas para mesmo user + filme
+
+  dbAssistidos.get(idUnico).catch(err => {
+    if (err.name === 'not_found') {
+      return dbAssistidos.put({
+        _id: idUnico,
+        username,
+        titulo,
+        capa,
+        genero,
+        descricao,
+        trailer
+      });
+    }
+  }).then(() => {
+    alert(`"${titulo}" marcado como assistido!`);
+    carregarAssistidos(); // Atualiza a lista se estiver na página certa
+  }).catch(err => {
+    console.error('Erro ao marcar como assistido:', err);
+  });
+}
+
+const dbAssistidos = new PouchDB('filmes_assistidos');
+
+document.addEventListener('DOMContentLoaded', () => {
+  const usuario = localStorage.getItem('usuarioLogado');
+  if (!usuario) {
+    alert("Você precisa estar logado.");
+    window.location.href = "login.html";
+    return;
+  }
+
+  document.getElementById('nomeUsuario').textContent = usuario;
+  document.getElementById('tipoUsuario').textContent = localStorage.getItem('tipoUsuario') || 'Desconhecido';
+
+  carregarFilmesAssistidos();
+
+  const formSenha = document.getElementById('form-senha');
+  if (formSenha) {
+    formSenha.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alterarSenha();
+    });
+  }
+});
+
+function carregarFilmesAssistidos() {
+  const container = document.getElementById('lista-assistidos');
+  if (!container) return;
+
+  const usuario = localStorage.getItem('usuarioLogado');
+  if (!usuario) {
+    container.innerHTML = "<p>Usuário não logado.</p>";
+    return;
+  }
+
+  dbAssistidos.allDocs({ include_docs: true }).then(result => {
+    const assistidos = result.rows.filter(row => row.doc.username === usuario);
+
+    if (assistidos.length === 0) {
+      container.innerHTML = "<p>Nenhum filme ou série assistido ainda.</p>";
+      return;
+    }
+
+    container.innerHTML = '';
+    assistidos.forEach(row => {
+      const doc = row.doc;
+      container.innerHTML += `
+        <div class="card-filme">
+          <img src="${doc.capa}" alt="${doc.titulo}" />
+          <p><strong>${doc.titulo}</strong></p>
+          <p><em>${doc.genero}</em></p>
+        </div>
+      `;
+    });
+  }).catch(err => {
+    console.error("Erro ao carregar assistidos:", err);
+    container.innerHTML = "<p>Erro ao carregar filmes assistidos.</p>";
+  });
+}
+
+function alterarSenha() {
+  const novaSenha = document.getElementById('novaSenha').value;
+  if (!novaSenha) return;
+
+  const username = localStorage.getItem('usuarioLogado');
+  const dbUsuarios = new PouchDB('usuarios');
+
+  dbUsuarios.allDocs({ include_docs: true }).then(result => {
+    const user = result.rows.find(r => r.doc.username === username);
+    if (user) {
+      const atualizado = {
+        ...user.doc,
+        senha: novaSenha
+      };
+
+      dbUsuarios.put(atualizado).then(() => {
+        alert("Senha atualizada com sucesso!");
+      });
+    }
+  });
+}
+
+
 

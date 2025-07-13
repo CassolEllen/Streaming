@@ -44,26 +44,31 @@
       </div>
     </div>
   </header>
-  <section class="banner">
-      <video class="bg" src="./assets/video/JogosVorazesPassarosSerpentes.mp4" autoplay muted loop></video>
-      <div class="overlay-left"></div>
-      <div class="content">
-        <img src="./assets/img/ACantigaPassarosSerpenteslogo.png" alt="Título do Filme" class="movietitle" />
-        <h4>
-          <span>2023</span>
-          <span>2h37min</span>
-          <span><i>+14</i></span>
-          <span>Ação</span>
-        </h4>
-        <p>
-          Neste prelúdio de Jogos Vorazes, o jovem Coriolanus Snow - décadas antes de se tornar o tirânico presidente de Panem - 
-          luta contra seus instintos entre bem e mal enquanto orienta Lucy Gray Baird nos 10º Jogos Vorazes.
-        </p>
-        <div class="buttons">
-          <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-          <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
-        </div>
+  <section class="banner"
+    data-titulo="A Cantiga dos Pássaros e das Serpentes"
+    data-capa="./assets/img/ACantigaPassarosSerpenteslogo.png"
+    data-genero="Ação"
+    data-descricao="Neste prelúdio de Jogos Vorazes, o jovem Coriolanus Snow luta contra seus instintos entre bem e mal enquanto orienta Lucy Gray Baird nos 10º Jogos Vorazes."
+    data-trailer="https://www.youtube.com/watch?v=EXEMPLO3">
+    <video class="bg" src="./assets/video/JogosVorazesPassarosSerpentes.mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/ACantigaPassarosSerpenteslogo.png" alt="Título do Filme" class="movietitle" />
+      <h4>
+        <span>2023</span>
+        <span>2h37min</span>
+        <span><i>+14</i></span>
+        <span>Ação</span>
+      </h4>
+      <p>Neste prelúdio de Jogos Vorazes, o jovem Coriolanus Snow - décadas antes de se tornar o tirânico presidente de Panem - luta contra seus instintos entre bem e mal enquanto orienta Lucy Gray Baird nos 10º Jogos Vorazes.</p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido">
+          <i class="bi bi-check-circle"></i> Marcar como Assistido
+        </button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
+    </div>
   </section>
 
   <section class="mais-populares">
@@ -103,49 +108,63 @@
   </div>
 </section>
 
-
-  <section class="banner">
-      <video class="bg" src="./assets/video/The Last - NARUTO O Filme ｜ Trailer Legendado.mp4" autoplay muted loop></video>
-      <div class="overlay-left"></div>
-      <div class="content">
-        <img src="./assets/img/TheLastNarutologo.png" alt="Título do Filme" class="movietitle" />
-        <h4>
-          <span>2015</span>
-          <span>1h52min</span>
-          <span><i>+10</i></span>
-          <span>Aventura</span>
-        </h4>
-        <p>
-          A lua se aproxima de forma perigosa! Naruto, Sakura, Shikamaru, Sai e Hinata, partem para investigar
-          e se deparam com uma trama e a mente por detrás dela.
-        </p>
-        <div class="buttons">
-          <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-          <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
-        </div>
+<section class="banner"
+    data-titulo="The Last - Naruto"
+    data-capa="./assets/img/TheLastNarutologo.png"
+    data-genero="Aventura"
+    data-descricao="A lua se aproxima de forma perigosa! Naruto e seus amigos partem para investigar e enfrentam uma mente por trás disso tudo."
+    data-trailer="https://youtube.com/watch?v=EXEMPLO2">
+    <video class="bg" src="./assets/video/The Last - NARUTO O Filme ｜ Trailer Legendado.mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/TheLastNarutologo.png" alt="The Last Naruto" class="movietitle" />
+      <h4>
+        <span>2015</span>
+        <span>1h52min</span>
+        <span><i>+10</i></span>
+        <span>Aventura</span>
+      </h4>
+      <p>
+        A lua se aproxima de forma perigosa! Naruto, Sakura, Shikamaru, Sai e Hinata partem para investigar e se deparam com uma trama sombria.
+      </p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
+    </div>
   </section>
+
 
   <section class="mais-populares">
   <h2 class="secao-titulo">Mais Populares Nesse Gênero</h2>
-  <div class="swiper naruto-filmes">
+  <div class="swiper meus-filmes">
     <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <div class="card-filme">
+          <img src="./assets/img/Boruto.png" alt="Boruto">
+          <p>Boruto: Naruto Next Generation</p>
+        </div>
+      </div>
+
       <div class="swiper-slide">
         <div class="card-filme">
           <img src="./assets/img/RoadtoNinja.png" alt="Road to Ninja">
           <p>Road to Ninja</p>
         </div>
       </div>
-      <div class="swiper-slide">
-        <div class="card-filme">
-          <img src="./assets/img/Boruto.png" alt="Boruto">
-          <p>Boruto</p>
-        </div>
-      </div>
+
       <div class="swiper-slide">
         <div class="card-filme">
           <img src="./assets/img/VontadeFogo.png" alt="Naruto: Herdeiros da Vontade de Fogo">
-          <p>Naruto: Herdeiros da Vontade de Fogo</p>
+          <p>Herdeiros da Vontade de Fogo</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card-filme">
+          <img src="./assets/img/ConfrontoNinja.jpg" alt="Confronto Ninja">
+          <p>Confronto Ninja Nas Terras de Gelo</p>
         </div>
       </div>
     </div>
@@ -154,12 +173,16 @@
   </div>
 </section>
 
-
-  <section class="banner">
+<section class="banner"
+    data-titulo="Nosferatu"
+    data-capa="./assets/img/nosferatulogo.png"
+    data-genero="Terror"
+    data-descricao="Uma jovem noiva é deixada sozinha enquanto seu marido vai à Transilvânia encontrar o Conde Orlok. Ela é atormentada por visões e um mal crescente."
+    data-trailer="https://youtube.com/watch?v=EXEMPLO3">
     <video class="bg" src="./assets/video/Nosferatu.mp4" autoplay muted loop></video>
     <div class="overlay-left"></div>
     <div class="content">
-      <img src="./assets/img/nosferatulogo.png" alt="Título do Filme" class="movietitle" />
+      <img src="./assets/img/nosferatulogo.png" alt="Nosferatu" class="movietitle" />
       <h4>
         <span>2024</span>
         <span>2h12min</span>
@@ -167,11 +190,11 @@
         <span>Terror</span>
       </h4>
       <p>
-        Uma jovem noiva é deixada sob os cuidados de amigos enquanto seu marido viaja para a Transilvânia
-        para encontrar o Conde Orlok. Atormentada por visões e um crescente pavor, ela se depara com uma força maligna.
+        Uma jovem noiva é deixada sob os cuidados de amigos enquanto seu marido viaja à Transilvânia. Visões e pavor a consomem quando descobre um mal à espreita.
       </p>
       <div class="buttons">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
         <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
       </div>
     </div>
@@ -179,7 +202,7 @@
 
   <section class="mais-populares">
   <h2 class="secao-titulo">Mais Populares Nesse Gênero</h2>
-  <div class="swiper terror-filmes">
+  <div class="swiper meus-filmes">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <div class="card-filme">
@@ -187,22 +210,25 @@
           <p>Drácula de Bram Stoker</p>
         </div>
       </div>
+
       <div class="swiper-slide">
         <div class="card-filme">
-          <img src="./assets/img/DraculaDemeter.jpg" alt="A última Viagem do Demeter">
-          <p>Drácula: A última Viagem do Demeter</p>
+          <img src="./assets/img/DraculaDemeter.jpg" alt="Drácula: A Última Viagem do Demeter">
+          <p>A Última Viagem do Demeter</p>
         </div>
       </div>
-      <div class="swiper-slide">
-        <div class="card-filme">
-          <img src="./assets/img/DraculaHistoriaNuncaContada.png" alt="Drácula: A História Nunca Contada">
-          <p>Drácula: A História Nunca Contada</p>
-        </div>
-      </div>
+
       <div class="swiper-slide">
         <div class="card-filme">
           <img src="./assets/img/OVampiroNoite.jpg" alt="O Vampiro da Noite">
           <p>O Vampiro da Noite</p>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card-filme">
+          <img src="./assets/img/DraculaHistoriaNuncaContada.png" alt="Drácula: A História Nunca Contada">
+          <p>Drácula: A História Nunca Contada</p>
         </div>
       </div>
     </div>
@@ -210,53 +236,40 @@
     <div class="swiper-button-prev"></div>
   </div>
 </section>
-
-  <script src="./js/app.js"></script>
-  <script>
-  new Swiper('.meus-filmes', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '.meus-filmes .swiper-button-next',
-      prevEl: '.meus-filmes .swiper-button-prev',
-    },
-    breakpoints: {
-      991: { slidesPerView: 3 },
-      768: { slidesPerView: 2 },
-      576: { slidesPerView: 1 }
-    }
-  });
-
-  new Swiper('.naruto-filmes', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '.naruto-filmes .swiper-button-next',
-      prevEl: '.naruto-filmes .swiper-button-prev',
-    },
-    breakpoints: {
-      991: { slidesPerView: 3 },
-      768: { slidesPerView: 2 },
-      576: { slidesPerView: 1 }
-    }
-  });
-
-  new Swiper('.terror-filmes', {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    navigation: {
-      nextEl: '.terror-filmes .swiper-button-next',
-      prevEl: '.terror-filmes .swiper-button-prev',
-    },
-    breakpoints: {
-      991: { slidesPerView: 3 },
-      768: { slidesPerView: 2 },
-      576: { slidesPerView: 1 }
-    }
-  });
-</script>
-
-
   
+  <script src="./js/app.js"></script>
+
+  <script>
+    // Inicializa todos os swipers
+    new Swiper('.meus-filmes', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: '.meus-filmes .swiper-button-next',
+        prevEl: '.meus-filmes .swiper-button-prev',
+      },
+      breakpoints: {
+        991: { slidesPerView: 3 },
+        768: { slidesPerView: 2 },
+        576: { slidesPerView: 1 }
+      }
+    });
+
+    // Ativa todos os botões de "Marcar como Assistido"
+    document.querySelectorAll('.marcar-assistido').forEach(botao => {
+      botao.addEventListener('click', function () {
+        const banner = this.closest('.banner');
+        const titulo = banner.dataset.titulo;
+        const capa = banner.dataset.capa;
+        const genero = banner.dataset.genero;
+        const descricao = banner.dataset.descricao;
+        const trailer = banner.dataset.trailer;
+
+        marcarComoAssistido(titulo, capa, genero, descricao, trailer);
+        alert(`"${titulo}" marcado como assistido!`);
+      });
+    });
+  </script>
 </body>
+</html>
 </html>

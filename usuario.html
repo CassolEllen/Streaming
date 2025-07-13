@@ -11,64 +11,71 @@
 </head>
 <body>
   <a href="index.html" class="btn-voltar">← Voltar para Home</a>
-  <header>
-    <h1>Olá, <span id="nomeUsuario">Usuário</span></h1>
-    <h4>Tipo: <span id="tipoUsuario">Comum</span></h4>
-  </header>
-
-  <div class="container">
-    <section>
-      <h2>Filmes Assistidos</h2>
-      <ul id="filmesAssistidos">
-      </ul>
-    </section>
-
-    <section>
-      <h2>Alterar Senha</h2>
-      <form id="form-senha">
-        <input type="password" placeholder="Nova senha" id="novaSenha">
-        <button type="submit">Atualizar Senha</button>
-      </form>
-    </section>
+  <body>
+  <div class="usuario-info">
+    <h1>Bem-vindo, <span id="nomeUsuario">Usuário</span>!</h1>
+    <p>Tipo: <strong><span id="tipoUsuario">Desconhecido</span></strong></p>
   </div>
 
+  <h2>Filmes/Séries Assistidos</h2>
+  <div id="lista-assistidos">
+    <div class="grid-assistidos">
+  <div class="card-filme">
+    <img src="./assets/img/matrix.jpeg" alt="Matrix" />
+    <p><strong>Matrix</strong></p>
+    <p><em>Ficção Científica</em></p>
+  </div>
+
+  <div class="card-filme">
+    <img src="./assets/img/senhordosaneis.jpg" alt="O Senhor dos Anéis" />
+    <p><strong>O Senhor dos Anéis</strong></p>
+    <p><em>Fantasia / Aventura</em></p>
+  </div>
+
+  <div class="card-filme">
+    <img src="https://m.media-amazon.com/images/I/61EZtFjHxDL._AC_SL1000_.jpg" alt="Stranger Things" />
+    <p><strong>Stranger Things</strong></p>
+    <p><em>Suspense / Sobrenatural</em></p>
+  </div>
+
+  <div class="card-filme">
+    <img src="https://m.media-amazon.com/images/I/71n58ddnPZL._AC_SY679_.jpg" alt="Breaking Bad" />
+    <p><strong>Breaking Bad</strong></p>
+    <p><em>Drama / Crime</em></p>
+  </div>
+
+  <div class="card-filme">
+    <img src="https://m.media-amazon.com/images/I/71Q1Iu4suSL._AC_SY679_.jpg" alt="Avatar" />
+    <p><strong>Avatar</strong></p>
+    <p><em>Ficção Científica / Aventura</em></p>
+  </div>
+
+  <div class="card-filme">
+    <img src="https://m.media-amazon.com/images/I/71rNJQ2g-EL._AC_SY679_.jpg" alt="Interestelar" />
+    <p><strong>Interestelar</strong></p>
+    <p><em>Ficção Científica / Drama</em></p>
+  </div>
+</div>
+
+  <form id="form-senha">
+    <h2>Alterar senha</h2>
+    <input type="password" id="novaSenha" placeholder="Nova senha" required />
+    <br />
+    <button type="submit">Alterar Senha</button>
+  </form>
+
+  <button id="logout" onclick="logout()">Sair</button>
+
+  <script src="js/pouchdb.min.js"></script>
+  <script src="js/app.js"></script>
   <script>
-    const dbFilmes = new PouchDB('filmes');
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const usuario = localStorage.getItem('usuarioLogado');
-      if (!usuario) {
-        alert("Você precisa estar logado para acessar.");
-        window.location.href = "login.html";
-        return;
-      }
-
-      document.getElementById('nomeUsuario').textContent = usuario;
-
-      carregarFilmesAssistidos();
-    });
-
-    function carregarFilmesAssistidos() {
-      const container = document.getElementById('filmesAssistidos');
-
-      dbFilmes.allDocs({ include_docs: true }).then(result => {
-        container.innerHTML = '';
-        result.rows.forEach(row => {
-          const filme = row.doc;
-          container.innerHTML += `
-            <div class="col">
-              <div class="card bg-dark text-white h-100">
-                <div class="card-body">
-                  <h5 class="card-title">${filme.titulo}</h5>
-                  <p class="card-text">${filme.descricao || 'Sem descrição.'}</p>
-                  <span class="badge bg-secondary">${filme.genero || 'Gênero não informado'}</span>
-                </div>
-              </div>
-            </div>
-          `;
-        });
-      });
+    function logout() {
+      localStorage.clear();
+      window.location.href = 'login.html';
     }
+  </script>
+</body>
+  <script>
 
     function alterarSenha() {
       const novaSenha = prompt("Digite sua nova senha:");

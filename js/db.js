@@ -17,3 +17,5 @@ dbUsuarios.put({
     console.error('Erro ao criar usuário de teste:', err);
   }
 });
+
+window.dbAssistidos = new PouchDB('filmes_assistidos');
