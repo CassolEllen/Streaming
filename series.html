@@ -19,13 +19,13 @@
       <img src="./assets/img/netflixlogo.png" alt="Logo Netflix">
     </a>
 
-    <ul class="navigation">
-  <li><a href="#">Home</a></li>
-  <li><a href="series.html">Séries</a></li>
-  <li><a href="index.html">Filmes</a></li>
-  <li><a href="#">Esportes</a></li>
-  <li><a href="#">Minha Lista</a></li>
-</ul>
+  <ul class="navigation">
+    <li><a href="#">Home</a></li>
+    <li><a href="series.html">Séries</a></li>
+    <li><a href="index.html">Filmes</a></li>
+    <li><a href="#">Esportes</a></li>
+    <li><a href="#">Minha Lista</a></li>
+  </ul>
 
 <div class="filtro-genero">
   <label for="generoSelect">Filtrar por gênero:</label>
@@ -39,6 +39,8 @@
     <option value="Ficção Científica">Ficção Científica</option>
     <option value="Romance">Romance</option>
     <option value="Animação">Animação</option>
+    <option value="Crime">Crime</option>
+    <option value="Animaçãos">Desastre</option>
   </select>
 </div>
 <div class="d-flex align-items-center gap-3">
@@ -58,7 +60,6 @@
     </div>
   </header>
 
-  <!-- Série: The Big Bang Theory -->
   <section class="banner"
     data-titulo="The Big Bang Theory"
     data-capa="./assets/img/TheBigBangTheory.png"
@@ -75,7 +76,9 @@
         <span><i>+10</i></span>
         <span>Comédia</span>
       </h4>
-      <p>Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados...</p>
+      <p>Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados
+        e lhes mostra quão pouco sabem sobre a vida fora do laboratório.
+      </p>
       <div class="buttons">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
@@ -84,7 +87,6 @@
     </div>
   </section>
 
-  <!-- Série: Peaky Blinders -->
   <section class="banner"
     data-titulo="Peaky Blinders"
     data-capa="./assets/img/PeakyBlinder.png"
@@ -101,7 +103,8 @@
         <span><i>+16</i></span>
         <span>Crime</span>
       </h4>
-      <p>Depois de servir no Exército, Thomas Shelby e seus irmãos voltam para controlar a cidade, mas conforme as ambições de Shelby se estendem...</p>
+      <p>Depois de servir no Exército, Thomas Shelby e seus irmãos voltam para controlar a cidade, mas, conforme as ambições de Shelby se estendem, ele 
+        planeja construir seu próprio negócio e impedir qualquer um que atrapalhe.</p>
       <div class="buttons">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
@@ -110,7 +113,6 @@
     </div>
   </section>
 
-  <!-- Série: Chernobyl -->
   <section class="banner"
     data-titulo="Chernobyl"
     data-capa="./assets/img/Chernobyllogo.png"
@@ -127,7 +129,34 @@
         <span><i>+16</i></span>
         <span>Desastre</span>
       </h4>
-      <p>A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986, revelando como e por que aconteceu...</p>
+      <p>A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986, revelando como e 
+        por que aconteceu e contando as histórias chocantes e notáveis daqueles que lutaram e caíram</p>
+      <div class="buttons">
+        <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
+        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="banner"
+    data-titulo="The Last of Us"
+    data-capa="./assets/img/TheLastOfUslogo.png"
+    data-genero="Desastre"
+    data-descricao="A minissérie foca no escândalo devastador do desastre da usina nuclear que ocorreu na Ucrânia em abril de 1986..."
+    data-trailer="https://www.youtube.com/watch?v=EXEMPLO3">
+    <video class="bg" src="./assets/video/The Last of Us ｜ Trailer da temporada 01 ｜ Legendado (Brasil) [4K].mp4" autoplay muted loop></video>
+    <div class="overlay-left"></div>
+    <div class="content">
+      <img src="./assets/img/TheLastOfUslogo.png" alt="Título da Série" class="movietitle" />
+      <h4>
+        <span>2023</span>
+        <span>1 Temporada</span>
+        <span><i>+16</i></span>
+        <span>Ação</span>
+      </h4>
+      <p>Joel e Ellie, um par conectado pela dureza do mundo em que vivem, são forçados a suportar circunstâncias brutais e assassinos implacáveis 
+        em uma jornada pela América pós-pandemia.</p>
       <div class="buttons">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
@@ -152,5 +181,15 @@
       });
     });
   </script>
+  <script>
+  const generoSelect = document.getElementById('generoSelect');
+  if (generoSelect) {
+    generoSelect.addEventListener('change', () => {
+      const genero = generoSelect.value;
+      carregarFilmes(genero); // atualiza os filmes mostrados
+    });
+  }
+</script>
+
 </body>
 </html>

@@ -21,12 +21,12 @@
     </a>
 
     <ul class="navigation">
-  <li><a href="#">Home</a></li>
-  <li><a href="series.html">Séries</a></li>
-  <li><a href="index.html">Filmes</a></li>
-  <li><a href="#">Esportes</a></li>
-  <li><a href="#">Minha Lista</a></li>
-</ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="series.html">Séries</a></li>
+      <li><a href="index.html">Filmes</a></li>
+      <li><a href="#">Esportes</a></li>
+      <li><a href="#">Minha Lista</a></li>
+    </ul>
 
 <div class="filtro-genero">
   <label for="generoSelect">Filtrar por gênero:</label>
@@ -76,7 +76,8 @@
         <span><i>+14</i></span>
         <span>Ação</span>
       </h4>
-      <p>Neste prelúdio de Jogos Vorazes, o jovem Coriolanus Snow - décadas antes de se tornar o tirânico presidente de Panem - luta contra seus instintos entre bem e mal enquanto orienta Lucy Gray Baird nos 10º Jogos Vorazes.</p>
+      <p>Neste prelúdio de Jogos Vorazes, o jovem Coriolanus Snow - décadas antes de se tornar o tirânico presidente de Panem - luta contra seus instintos 
+        entre bem e mal enquanto orienta Lucy Gray Baird nos 10º Jogos Vorazes.</p>
       <div class="buttons">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido">
@@ -351,6 +352,50 @@
       });
     });
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const generoSelect = document.getElementById("generoSelect");
+
+    generoSelect.addEventListener("change", () => {
+      const generoSelecionado = generoSelect.value;
+      const banners = document.querySelectorAll("section.banner");
+
+      banners.forEach(banner => {
+        const spans = banner.querySelectorAll("h4 span");
+        const generoFilme = spans[spans.length - 1]?.textContent.trim();
+
+        if (!generoSelecionado || generoFilme === generoSelecionado) {
+          banner.style.display = "block";
+        } else {
+          banner.style.display = "none";
+        }
+      });
+
+      // Oculta ou mostra os carrosséis "Mais Populares Nesse Gênero"
+      const secoesPopulares = document.querySelectorAll("section.mais-populares");
+      secoesPopulares.forEach(secao => {
+        const tituloSecao = secao.previousElementSibling;
+        if (
+          tituloSecao &&
+          tituloSecao.tagName === "SECTION" &&
+          tituloSecao.classList.contains("banner")
+        ) {
+          const spans = tituloSecao.querySelectorAll("h4 span");
+          const generoFilme = spans[spans.length - 1]?.textContent.trim();
+          if (!generoSelecionado || generoFilme === generoSelecionado) {
+            secao.style.display = "block";
+          } else {
+            secao.style.display = "none";
+          }
+        }
+      });
+    });
+  });
+</script>
+
+
+
 </body>
 </html>
 </html>
