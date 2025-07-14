@@ -171,7 +171,7 @@ document.getElementById('limparBanco')?.addEventListener('click', async () => {
     const usuarios = await dbUsuarios.allDocs({ include_docs: true });
     for (const row of usuarios.rows) {
       const { username } = row.doc;
-      if (username !== 'admin' && username !== 'ellen4') {
+      if (username !== 'admin') {
         await dbUsuarios.remove(row.doc);
       }
     }
@@ -186,17 +186,7 @@ document.getElementById('limparBanco')?.addEventListener('click', async () => {
       });
     });
 
-    // Recria ellen4
-    dbUsuarios.get('ellen4').catch(() => {
-      return dbUsuarios.put({
-        _id: 'ellen4',
-        username: 'ellen4',
-        senha: 'ellen4',
-        tipo: 'comum'
-      });
-    });
-
-    alert("Banco de dados limpo! Apenas 'admin' e 'ellen4' foram mantidos.");
+    alert("Banco de dados limpo! Apenas 'admin' foi mantido.");
     carregarUsuarios();
     carregarFilmes();
 
