@@ -43,6 +43,7 @@
     <option value="Animaçãos">Desastre</option>
   </select>
 </div>
+
 <div class="d-flex align-items-center gap-3">
       <div class="search">
         <input type="text" placeholder="Pesquisar" />
@@ -60,31 +61,36 @@
     </div>
   </header>
 
-  <section class="banner"
-    data-titulo="The Big Bang Theory"
-    data-capa="./assets/img/TheBigBangTheory.png"
-    data-genero="Comédia"
-    data-descricao="Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados, e lhes mostra quão pouco sabem sobre a vida fora do laboratório."
-    data-trailer="https://www.youtube.com/watch?v=EXEMPLO">
-    <video class="bg" src="./assets/video/The Big Bang Theory - 10ª Temporada Completa Trailer Oficial.mp4" autoplay muted loop></video>
+  <section class="banner p-4" data-titulo="The Big Bang Theory">
+    <video class="bg w-100" src="./assets/video/The Big Bang Theory - 10ª Temporada Completa Trailer Oficial.mp4" autoplay muted loop></video>
     <div class="overlay-left"></div>
-    <div class="content">
-      <img src="./assets/img/TheBigBangTheory.png" alt="Título do Filme" class="movietitle" />
+    <div class="content text-white position-absolute top-50 start-0 translate-middle-y ps-4">
+      <img src="./assets/img/TheBigBangTheory.png" alt="The Big Bang Theory" class="movietitle mb-3" />
       <h4>
-        <span>2007</span>
-        <span>12 Temporadas</span>
-        <span><i>+10</i></span>
+        <span>2007</span> 
+        <span>12 Temporadas</span> 
+        <span><i>+10</i></span> 
         <span>Comédia</span>
       </h4>
-      <p>Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados
-        e lhes mostra quão pouco sabem sobre a vida fora do laboratório.
-      </p>
-      <div class="buttons">
+      <p>Uma mulher se muda para um apartamento do outro lado do corredor perto de dois físicos brilhantes, mas socialmente desajeitados...</p>
+
+      <div class="buttons d-flex gap-2 mt-3">
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
-        <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
+        <button class="btn btn-light"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
         <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+        <button class="btn btn-ver-episodios ver-episodios-btn"><i class="bi bi-list-ul"></i> Ver Episódios</button>
       </div>
     </div>
+  </section>
+
+  <section id="episodiosContainer" class="container episodios-container d-none">
+    <h3 class="text-white">Episódios</h3>
+    <div class="mb-3">
+      <label for="temporadaSelect" class="form-label text-white">Selecione a Temporada:</label>
+      <select id="temporadaSelect" class="form-select w-auto">
+      </select>
+    </div>
+    <div class="row" id="episodiosLista"></div>
   </section>
 
   <section class="banner"
@@ -109,9 +115,20 @@
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
         <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+        <button class="btn btn-ver-episodios ver-episodios-btn"><i class="bi bi-list-ul"></i> Ver Episódios</button>
       </div>
     </div>
   </section>
+
+    <section id="episodiosContainer" class="container episodios-container d-none">
+      <h3 class="text-white">Episódios</h3>
+      <div class="mb-3">
+        <label for="temporadaSelect" class="form-label text-white">Selecione a Temporada:</label>
+        <select id="temporadaSelect-pb" class="form-select w-auto temporada-select">
+        </select>
+      </div>
+      <div class="row episodios-lista"></div>
+    </section>
 
   <section class="banner"
     data-titulo="Chernobyl"
@@ -135,8 +152,19 @@
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
         <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+        <button class="btn btn-ver-episodios ver-episodios-btn"><i class="bi bi-list-ul"></i> Ver Episódios</button>
       </div>
     </div>
+  </section>
+
+  <section id="episodiosContainer" class="container episodios-container d-none">
+    <h3 class="text-white">Episódios</h3>
+    <div class="mb-3">
+      <label for="temporadaSelect" class="form-label text-white">Selecione a Temporada:</label>
+      <select id="temporadaSelect" class="form-select w-auto">
+      </select>
+    </div>
+    <div class="row" id="episodiosLista"></div>
   </section>
 
   <section class="banner"
@@ -161,8 +189,19 @@
         <button class="btn btn-light"><i class="bi bi-play-fill"></i> Assistir</button>
         <button class="btn btn-light marcar-assistido"><i class="bi bi-check-circle"></i> Marcar como Assistido</button>
         <button class="btn btn-outline-light"><i class="bi bi-plus-lg"></i> Minha Lista</button>
+        <button class="btn btn-ver-episodios ver-episodios-btn"><i class="bi bi-list-ul"></i> Ver Episódios</button>
       </div>
     </div>
+  </section>
+
+  <section id="episodiosContainer" class="container episodios-container d-none">
+    <h3 class="text-white">Episódios</h3>
+    <div class="mb-3">
+      <label for="temporadaSelect" class="form-label text-white">Selecione a Temporada:</label>
+      <select id="temporadaSelect" class="form-select w-auto">
+      </select>
+    </div>
+    <div class="row" id="episodiosLista"></div>
   </section>
 
   <script src="./js/app.js"></script>
@@ -186,10 +225,122 @@
   if (generoSelect) {
     generoSelect.addEventListener('change', () => {
       const genero = generoSelect.value;
-      carregarFilmes(genero); // atualiza os filmes mostrados
+      carregarFilmes(genero); // atualiza as series mostrados
     });
   }
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const verEpisodiosBtn = document.getElementById("verEpisodiosBtn");
+    const episodiosContainer = document.getElementById("episodiosContainer");
+    const episodiosLista = document.getElementById("episodiosLista");
+    const temporadaSelect = document.getElementById("temporadaSelect");
+
+    // Dados fictícios de exemplo
+    const episodios = {
+      "The Big Bang Theory": {
+      "1": [
+        { titulo: "Episódio 1 - Piloto", descricao: "Um par de físicos desajeitados conhecem sua nova vizinha, Penny que é o oposto deles.", imagem: "./assets/img/thebigbangtheorytemp1ep1.jpg"},
+        { titulo: "Episódio 2 - A Hipótese do Grande Farelo", descricao: "Penny fica furiosa com Leonard e Sheldon quando eles entram em seu apartamento à noite e o limpam enquanto ela está dormindo", imagem: "./assets/img/thebigbangtheorytemp1ep2.jpg" },
+        { titulo: "Episódio 3 - A Disputa de Botas no Corolário", descricao: "Leonard fica chateado quando descobre que Penny está saindo com um cara novo, então, seguindo um conselho de Sheldon, ele tenta convidá-la para um encontro.", imagem: "./assets/img/thebigbangtheorytemp1ep3.jpg" },
+        { titulo: "Episódio 4 - O Efeito Luminoso do Peixe", descricao: "A mãe de Sheldon é chamada para intervir em suas ações, quando ele mergulha em inúmeras obsessões após ser demitido pelo seu novo chefe na Caltech por desrespeitá-lo.", imagem: "./assets/img/thebigbangtheorytemp1ep4.jpg" },
+        { titulo: "Episódio 5 - O Hamburger Postulado", descricao: "Leslie seduz Leonard, porém depois diz a ele que apenas está interessada em um caso de uma noite.", imagem: "./assets/img/thebigbangtheorytemp1ep5.jpg" }
+      ],
+      "2": [
+        { titulo: "Episódio 1 - O Paradigma do Peixe Podre", descricao: "Leonard fica preocupado quando seu encontro com Penny acaba abruptamente e ela começa a dispensá-lo. Quando Penny conta o motivo a Sheldon, ele prefere se mudar do que manter os motivos de Penny em segredo de Leonard.", imagem: "./assets/img/thebigbangtheorytemp2ep1.jpg" },
+        { titulo: "Episódio 2 - A Topologia do Alçapão", descricao: "Sheldon se irrita quando Leonard pede consolo a sua arqui-inimiga, Leslie após ver Penny com outro cara.", imagem: "./assets/img/thebigbangtheorytemp2ep2.jpg" },
+        { titulo: "Episódio 3 - A Sublimação Bárbara", descricao: "Sheldon apresenta a Penny um jogo online, porém ela se recusa a parar após se tornar viciada neste jogo.", imagem: "./assets/img/thebigbangtheorytemp2ep3.jpg" }
+      ]
+    } ,
+
+    "Peaky Blinders": {
+      "1": [
+        { titulo: "Episódio 1 - Piloto", descricao: "Thomas Shelby e sua gangue controlam Birmingham, mas a chegada de um novo inspetor ameaça seus negócios.", imagem: "./assets/img/peakyblinderstemp1ep1.jpg" },
+        { titulo: "Episódio 2 - A Ascensão", descricao: "Thomas planeja expandir seus negócios, mas enfrenta resistência de outros gangsters locais.", imagem: "./assets/img/peakyblinderstemp1ep2.jpg" },
+        { titulo: "Episódio 3 - Conflitos", descricao: "A rivalidade entre gangues aumenta, levando a confrontos violentos nas ruas de Birmingham.", imagem: "./assets/img/peakyblinderstemp1ep3.jpg" }
+      ]
+    }
+  };
+
+    // Preencher o select com base nas temporadas disponíveis
+    Object.keys(episodios).forEach(temp => {
+    const option = document.createElement("option");
+    option.value = temp;
+    option.textContent = `Temporada ${temp}`;
+    temporadaSelect.appendChild(option);
+  });
+
+  function exibirEpisodios(serie, temporada) {
+  episodiosLista.innerHTML = "";
+
+  const lista = (episodios[serie] && episodios[serie][temporada]) || [];
+
+  lista.forEach(ep => {
+    const col = document.createElement("div");
+    col.classList.add("col-md-4", "col-lg-3", "mb-4");
+
+    col.innerHTML = `
+      <div class="episodio-card h-100 text-white rounded shadow" style="background-image: url('${ep.imagem}'); background-size: cover; background-position: center;">
+        <div style="background-color: rgba(0,0,0,0.8); padding: 1rem; border-radius: 10px; height: 100%;">
+          <h5>${ep.titulo}</h5>
+          <p>${ep.descricao}</p>
+        </div>
+      </div>
+    `;
+
+    episodiosLista.appendChild(col);
+  });
+}
+
+
+  // Aplica evento a todos os botões com a classe .ver-episodios-btn
+  document.querySelectorAll(".ver-episodios-btn").forEach(botao => {
+  botao.addEventListener("click", () => {
+    const banner = botao.closest(".banner");
+    const serie = banner.dataset.titulo;
+
+    if (!episodios[serie]) {
+      alert("Episódios não disponíveis para esta série ainda.");
+      return;
+    }
+
+    // Limpa e preenche o select de temporadas com base na série clicada
+    temporadaSelect.innerHTML = "";
+    Object.keys(episodios[serie]).forEach(temp => {
+      const option = document.createElement("option");
+      option.value = temp;
+      option.textContent = `Temporada ${temp}`;
+      temporadaSelect.appendChild(option);
+    });
+
+    episodiosContainer.classList.remove("d-none");
+    exibirEpisodios(serie, temporadaSelect.value || "1");
+    episodiosContainer.scrollIntoView({ behavior: "smooth" });
+
+    // Salva série ativa para troca de temporada
+    temporadaSelect.setAttribute("data-serie", serie);
+  });
+});
+
+
+  temporadaSelect.addEventListener("change", () => {
+  const serie = temporadaSelect.getAttribute("data-serie");
+  const temporada = temporadaSelect.value;
+  exibirEpisodios(serie, temporada);
+});
+
+  // Inicializa a exibição dos episódios da primeira série
+  if (temporadaSelect.options.length > 0) {
+    const primeiraSerie = temporadaSelect.options[0].value;
+    exibirEpisodios(primeiraSerie, "1");
+  }
+});
+
+  
+</script>
+
+
 
 </body>
 </html>
