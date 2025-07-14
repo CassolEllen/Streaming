@@ -271,8 +271,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  document.getElementById('nomeUsuario').textContent = usuario;
-  document.getElementById('tipoUsuario').textContent = localStorage.getItem('tipoUsuario') || 'Desconhecido';
+  const spanNomeUsuario = document.getElementById('nomeUsuario');
+const spanTipoUsuario = document.getElementById('tipoUsuario');
+
+if (spanNomeUsuario) spanNomeUsuario.textContent = localStorage.getItem('usuarioLogado');
+if (spanTipoUsuario) spanTipoUsuario.textContent = localStorage.getItem('tipoUsuario') || 'Desconhecido';
+
 
   carregarFilmesAssistidos();
 
