@@ -264,8 +264,6 @@ function marcarComoAssistido(titulo, capa, genero, descricao, trailer) {
 const dbAssistidos = new PouchDB('filmes_assistidos');
 
 
-
-
 function carregarFilmesAssistidos() {
   const container = document.getElementById('lista-assistidos');
   if (!container) return;
