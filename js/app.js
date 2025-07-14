@@ -263,34 +263,7 @@ function marcarComoAssistido(titulo, capa, genero, descricao, trailer) {
 
 const dbAssistidos = new PouchDB('filmes_assistidos');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const usuario = localStorage.getItem('usuarioLogado');
-  const tipo = localStorage.getItem('tipoUsuario') || 'Desconhecido';
 
-  // Só redireciona se estiver em páginas protegidas (ex: usuario.html)
-  const precisaLogin = !!document.getElementById('nomeUsuario') || !!document.getElementById('form-senha') || !!document.getElementById('lista-assistidos');
-  if (!usuario && precisaLogin) {
-    alert("Você precisa estar logado.");
-    window.location.href = "login.html";
-    return;
-  }
-
-  const spanNomeUsuario = document.getElementById('nomeUsuario');
-  const spanTipoUsuario = document.getElementById('tipoUsuario');
-
-  if (spanNomeUsuario) spanNomeUsuario.textContent = usuario;
-  if (spanTipoUsuario) spanTipoUsuario.textContent = tipo;
-
-  if (document.getElementById('lista-assistidos')) carregarFilmesAssistidos();
-
-  const formSenha = document.getElementById('form-senha');
-  if (formSenha) {
-    formSenha.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alterarSenha();
-    });
-  }
-});
 
 
 function carregarFilmesAssistidos() {
