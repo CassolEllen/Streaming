@@ -265,20 +265,23 @@ const dbAssistidos = new PouchDB('filmes_assistidos');
 
 document.addEventListener('DOMContentLoaded', () => {
   const usuario = localStorage.getItem('usuarioLogado');
-  if (!usuario) {
+  const tipo = localStorage.getItem('tipoUsuario') || 'Desconhecido';
+
+  // Só redireciona se estiver em páginas protegidas (ex: usuario.html)
+  const precisaLogin = !!document.getElementById('nomeUsuario') || !!document.getElementById('form-senha') || !!document.getElementById('lista-assistidos');
+  if (!usuario && precisaLogin) {
     alert("Você precisa estar logado.");
     window.location.href = "login.html";
     return;
   }
 
   const spanNomeUsuario = document.getElementById('nomeUsuario');
-const spanTipoUsuario = document.getElementById('tipoUsuario');
+  const spanTipoUsuario = document.getElementById('tipoUsuario');
 
-if (spanNomeUsuario) spanNomeUsuario.textContent = localStorage.getItem('usuarioLogado');
-if (spanTipoUsuario) spanTipoUsuario.textContent = localStorage.getItem('tipoUsuario') || 'Desconhecido';
+  if (spanNomeUsuario) spanNomeUsuario.textContent = usuario;
+  if (spanTipoUsuario) spanTipoUsuario.textContent = tipo;
 
-
-  carregarFilmesAssistidos();
+  if (document.getElementById('lista-assistidos')) carregarFilmesAssistidos();
 
   const formSenha = document.getElementById('form-senha');
   if (formSenha) {
@@ -288,6 +291,7 @@ if (spanTipoUsuario) spanTipoUsuario.textContent = localStorage.getItem('tipoUsu
     });
   }
 });
+
 
 function carregarFilmesAssistidos() {
   const container = document.getElementById('lista-assistidos');
