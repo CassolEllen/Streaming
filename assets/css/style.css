@@ -318,7 +318,6 @@ header {
   opacity: 1;
 }
 
-/* Scrollbar para fallback horizontal */
 .carrossel::-webkit-scrollbar {
   height: 8px;
 }
@@ -326,6 +325,31 @@ header {
 .carrossel::-webkit-scrollbar-thumb {
   background: #e50914;
   border-radius: 4px;
+}
+
+.usuario-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+
+.usuario-area .search {
+  flex: 1 1 250px; /* se adapta com no mínimo 250px */
+  min-width: 180px;
+}
+
+.usuario-area .search input {
+  width: 100%;
+}
+
+.usuario-area .icones {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: fit-content;
 }
 
 /* RESPONSIVO */
