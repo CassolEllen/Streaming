@@ -1,6 +1,4 @@
-// js/app.js
 
-// Inicializa os bancos de dados
 const dbUsuarios = new PouchDB('usuarios');
 const dbFilmes = new PouchDB('filmes');
 
@@ -171,10 +169,20 @@ document.getElementById('limparBanco')?.addEventListener('click', async () => {
     const usuarios = await dbUsuarios.allDocs({ include_docs: true });
     for (const row of usuarios.rows) {
       const { username } = row.doc;
-      if (username !== 'admin') {
+      if (username !== 'admin' && username !== 'ellen4') {
         await dbUsuarios.remove(row.doc);
       }
     }
+
+     // Recria ellen4
+     dbUsuarios.get('ellen4').catch(() => {
+      return dbUsuarios.put({
+        _id: 'ellen4',
+        username: 'ellen4',
+        senha: 'ellen4',
+        tipo: 'comum'
+      });
+    });
 
     // Recria admin
     dbUsuarios.get('admin').catch(() => {
@@ -245,7 +253,7 @@ function marcarComoAssistido(titulo, capa, genero, descricao, trailer) {
     }
   }).then(() => {
     alert(`"${titulo}" marcado como assistido!`);
-    carregarAssistidos(); // Atualiza a lista se estiver na página certa
+    carregarAssistidos(); 
   }).catch(err => {
     console.error('Erro ao marcar como assistido:', err);
   });
