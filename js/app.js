@@ -175,14 +175,28 @@ document.getElementById('limparBanco')?.addEventListener('click', async () => {
     }
 
      // Recria ellen4
-     dbUsuarios.get('ellen4').catch(() => {
-      return dbUsuarios.put({
-        _id: 'ellen4',
-        username: 'ellen4',
-        senha: 'ellen4',
-        tipo: 'comum'
-      });
-    });
+dbUsuarios.allDocs({ include_docs: true }).then(result => {
+  const usuarios = result.rows;
+
+  // Remove qualquer usuário com username = "ellen4"
+  const promises = usuarios
+    .filter(row => row.doc.username === 'ellen4')
+    .map(row => dbUsuarios.remove(row.doc));
+
+  return Promise.all(promises);
+}).then(() => {
+  // Recria com _id fixo
+  return dbUsuarios.put({
+    _id: 'ellen4',
+    username: 'ellen4',
+    senha: 'ellen4',
+    tipo: 'comum'
+  });
+}).then(() => {
+  console.log('ellen4 recriado');
+}).catch(err => {
+  console.error('Erro ao recriar ellen4:', err);
+});
 
     // Recria admin
     dbUsuarios.get('admin').catch(() => {
